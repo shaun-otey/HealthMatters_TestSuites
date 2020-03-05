@@ -47,9 +47,6 @@ Test Teardown   Run Keywords    Run Keyword If
 
 *** Test Cases ***
 
-
-
-KSweb test
     Open Browser    https://ks.ksp1446.com/users/sign_in    ${BROWSER}
     Input Text    //input[@name="user[email]"]   ${USER}  shaun.otey@kipu.health  ${PASSWORD}  HZnhDtKb
     Click Element    //input[@name="commit"]
