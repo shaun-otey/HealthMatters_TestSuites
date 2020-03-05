@@ -1,0 +1,307 @@
+
+***Settings***
+
+Documentation
+A test suite with a single test for KSweb
+...               Created by hats' Robotcorder
+
+Library           RequestsLibrary
+Library         String
+Library         Collections
+Library         DateTime
+Library         OperatingSystem
+Library         SeleniumLibrary    run_on_failure=Custom screenshot
+Library         DatabaseLibrary
+Library         ExtraLibrary.py
+Resource        keywords/setup.robot
+Resource        keywords/creation.robot
+Resource        keywords/dom_var.robot
+Resource        keywords/api_connect.robot
+Resource        secret.robot
+Resource        ${VARS}
+
+*** Variables ***
+${URL}          https://ks.ksp1446.com/users/sign_in
+${BROWSER}      chrome
+${SLEEP}        3
+${USER}         shaun.otey@kipu.health
+${PASSWORD}     HZnhDtKb
+Default Tags    ks web    ad001
+Resource        ../../suite.robot
+Suite Setup     Travel "slow" to "admin" user "dashboard" page
+...             Run Keyword         Wait Until Page Contains  Element
+...             AND                 //input[@id="user_email"]
+...             AND                 Input Text    //input[@id="user_email"]
+...             AND                 shaun.otey@kipu.health
+...             AND                 Sleep    ${SLEEP}    3
+...             AND                 Wait Until Page Contains Element    //input[@id="user_password"]
+...             AND                 Input Text    //input[@id="user_password"]    HZnhDtKb
+...             AND                 Sleep    ${SLEEP}    3
+...             AND                 Click Element    //input[@class="btn btn-primary"]
+...             AND                 Sleep    ${SLEEP}    3
+
+Suite Teardown  Return to dashboard
+Test Teardown   Run Keywords    Run Keyword If
+...             Test Failed     Custom screenshot
+...             AND             Go To    ${URL}${USER}
+
+*** Test Cases ***
+
+
+
+KSweb test
+    Open Browser    https://ks.ksp1446.com/users/sign_in    ${BROWSER}
+    Input Text    //input[@name="user[email]"]   ${USER}  shaun.otey@kipu.health  ${PASSWORD}  HZnhDtKb
+    Click Element    //input[@name="commit"]
+    Click Element    //i[@class="fas fa-chevron-down"]
+    Click Element    //i[@class="fas fa-download"]
+    Click Element    //th[@id="dashboard-chevron"]
+    Click Link    //a[@href="/apps/?versionFilter=8.0.2.9.aws"]
+    Click Link    //a[@href="/apps/?versionFilter=8.0.2.9.aws"]
+    Click Element    xpath=(//td)[2]
+    Click Element    //input[@class="app-select"]
+    Click Element    xpath=(//span)[11]
+    Click Element    xpath=(//span)[1848]
+    Input Text    //input[@id="quick_app"]    11367
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[3]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[4]
+    Click Link    //a[@href="#financial_report_card"]
+    Click Element    //i[@class="fas fa-chevron-down"]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[2]
+    Click Link    //a[@href="https://s3.console.aws.amazon.com/s3/buckets/kipu-11367/?region=us-east-1"]
+    Click Element    //i[@class="far fa-edit d-none"]
+    Input Text    //input[@name="app[acct_name]"]    Ogleth
+    Select From List By Value    //select[@name="app[status_id]"]    1
+    Click Element    //input[@name="commit"]
+    Click Element    //i[@class="far fa-edit d-none"]
+    Input Text    //input[@name="app[city]"]    miami
+    Click Element    //input[@name="commit"]
+    Click Link    //a[@id="web_log_tab"]
+    Click Link    //a[@id="overview_tab"]
+    Click Link    //a[@id="release_logs_tab"]
+    Click Link    //a[@id="overview_tab"]
+    Click Element    //div[@class="feed"]
+    Click Element    //button[@class="btn btn-success"]
+    Click Element    //button[@id="deployAppBtn"]
+    Input Text    //input[@id="deployVersion"]    8.0.2.9.aws
+    Click Element    //button[@class="btn btn-primary"]
+    Click Element    xpath=(//span)[107]
+    Click Element    //i[@class="fas fa-chevron-down"]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[2]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[3]
+    Click Link    //a[@href="#web_cpu_metrics_card"]
+    Click Link    //a[@href="#web_mem_metrics_card"]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[6]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[7]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[8]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[9]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[10]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[11]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[12]
+    Click Link    //a[@id="release_logs_tab"]
+    Click Element    //button[@class="btn btn-success"]
+    Click Link    //a[@id="release_logs_tab"]
+    Click Link    //a[@id="overview_tab"]
+    Click Element    xpath=(//span)[3]
+    Click Element    xpath=(//td)[41]
+    Click Link    //a[@id="tasks_tab"]
+    Click Element    //td[@class="col text-center"]
+    Select From List By Value    //select[@name="tasks_partial_table_length"]    100
+    Click Element    //th[@id="name"]
+    Click Element    //th[@id="name"]
+    Click Element    //th[@class="col text-center sorting"]
+    Click Element    //th[@class="col text-center sorting_asc"]
+    Click Element    //th[@class="col text-center sorting"]
+    Click Element    //th[@class="col text-center sorting_asc"]
+    Input Text    xpath=(//input[@class="form-control form-control-sm"])[2]    rel-test
+    Click Link    //a[@id="ci_tab"]
+    Click Element    //th[@id="name"]
+    Click Element    xpath=(//span)[4]
+    Input Text    //input[@id="quick_app"]    11367
+    Click Element    xpath=(//span)[5]
+    Click Element    //i[@class="fas fa-chevron-down"]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[2]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[3]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[4]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[5]
+    Click Element    xpath=(//i[@class="fas fa-chevron-down"])[6]
+    Click Element    xpath=(//span)[4]
+    Click Element    //td[@class="sorting_1"]
+    Click Element    //td[@class="col-8 icon r-avail"]
+    Click Element    //th[@class="col-2 sorting_asc"]
+    Click Element    //th[@class="col-2 sorting_desc"]
+    Click Element    //th[@class="col-1 sorting"]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    //th[@class="col-1 sorting"]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    xpath=(//th[@class="col-1 sorting"])[2]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    xpath=(//th[@class="col-1 sorting"])[3]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    xpath=(//th[@class="col-1 sorting"])[4]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    //th[@class="col-1 sorting_desc"]
+    Click Element    xpath=(//th[@class="col-2 sorting"])[2]
+    Click Element    //th[@class="col-2 sorting_asc"]
+    Input Text    //input[@class="form-control form-control-sm"]    kipu-11367
+    Click Element    //th[@class="col-2 sorting"]
+    Click Element    //th[@class="col-2 sorting_asc"]
+    Click Element    //th[@class="col-1 sorting"]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    //th[@class="col-1 sorting"]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    xpath=(//th[@class="col-1 sorting"])[2]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    xpath=(//th[@class="col-1 sorting"])[3]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    xpath=(//th[@class="col-1 sorting"])[4]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    xpath=(//th[@class="col-2 sorting"])[2]
+    Click Element    //th[@class="col-2 sorting_asc"]
+    Click Element    xpath=(//th[@class="col-1 sorting"])[6]
+    Click Element    //th[@class="col-1 sorting_asc"]
+    Click Element    xpath=(//th[@class="col-2 sorting"])[3]
+    Click Element    //th[@class="col-2 sorting_asc"]
+    Click Element    //td
+    Click Link    //a[@href="/redis"]
+    Click Element    xpath=(//span)[6]
+    Click Element    //button[@class="btn btn-outline-secondary border-left-0"]
+    Click Element    xpath=(//div)[62]
+    Click Element    //div[@id="billing-dates-submit"]
+    Click Element    //th[@class="sorting_desc"]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    //th[@class="sorting"]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[2]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[3]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[4]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[5]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[6]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[7]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    //th[@class="sorting_desc"]
+    Click Link    xpath=(//a[@href="#"])[6]
+    Click Link    xpath=(//a[@href="#"])[7]
+    Click Link    xpath=(//a[@href="#"])[8]
+    Click Link    xpath=(//a[@href="#"])[9]
+    Click Element    //li[@id="billing-snapshots-table_ellipsis"]
+    Click Element    //li[@id="billing-snapshots-table_ellipsis"]
+    Click Element    //li[@id="billing-snapshots-table_ellipsis"]
+    Click Element    //li[@id="billing-snapshots-table_ellipsis"]
+    Click Element    //li[@id="billing-snapshots-table_ellipsis"]
+    Click Link    xpath=(//a[@href="#"])[9]
+    Click Element    //li[@id="billing-snapshots-table_ellipsis"]
+    Click Element    //li[@id="billing-snapshots-table_ellipsis"]
+    Click Element    //li[@id="billing-snapshots-table_ellipsis"]
+    Click Link    xpath=(//a[@href="#"])[9]
+    Click Link    xpath=(//a[@href="#"])[11]
+    Click Link    xpath=(//a[@href="#"])[10]
+    Click Link    xpath=(//a[@href="#"])[12]
+    Click Link    xpath=(//a[@href="#"])[4]
+    Click Element    xpath=(//div[@class="btn btn-primary ml-3"])[2]
+    Click Element    xpath=(//span)[7]
+    Click Link    //a[@href="/admin/configs"]
+    Click Element    //i[@class="far fa-edit"]
+    Input Text    //input[@id="quick_app"]    11367
+    Click Element    xpath=(//span)[6]
+    Click Element    xpath=(//span)[7]
+    Click Element    xpath=(//span)[7]
+    Click Element    xpath=(//span)[7]
+    Click Link    //a[@href="/admin/users"]
+    Click Element    //th[@class="col-5 sorting"]
+    Click Element    //th[@class="col-5 sorting_asc"]
+    Click Element    //th[@class="col-5 sorting_desc"]
+    Click Element    //th[@class="col-5 sorting_asc"]
+    Click Element    //td[@id="roles-43"]
+    Click Element    //i[@class="fas fa-edit"]
+    Click Element    xpath=(//span)[47]
+    Select From List By Value    //select[@name="add-role"]    collection
+    Click Element    xpath=(//i[@class="fas fa-plus d_none"])[6]
+    Click Link    //a[@href="/admin/users/43/reset_pw"]
+    Click Link    //a[@href="#new-user-box"]
+    Input Text    //input[@name="user[email]"]    testapowerdev@kipu.health
+    Select From List By Value    //select[@name="user[roles]"]    power_developer
+    Click Element    //input[@name="commit"]
+    Click Element    xpath=(//span)[7]
+    Click Link    //a[@href="/admin/archives"]
+    Click Element    //i[@class="far fa-edit"]
+    Click Element    //i[@title="save"]
+    Click Element    //i[@class="far fa-edit"]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    //th[@class="sorting_desc"]
+    Click Element    //th[@class="sorting"]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[2]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[3]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[4]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[5]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[6]
+    Click Element    //th[@class="sorting_asc"]
+    Click Element    xpath=(//th[@class="sorting"])[7]
+    Click Element    //th[@class="sorting_asc"]
+    Input Text    xpath=(//input)[3]    lklll
+    Input Text    xpath=(//input)[3]
+    Click Element    //button[@id="sidebarToggle"]
+    Click Element    //button[@id="sidebarToggle"]
+    Click Element    //div[@id="news_feed"]
+    Click Element    //span
+
+***Keywords***
+Searching for App instances
+  Wait Until Page Contains Element    xpath=(//span)[2]
+  Click Element    xpath=(//span)[2]
+  Sleep    ${SLEEP}  3
+  Input Text    //input[@class="form-control form-control-sm"]    11367
+  Sleep    ${SLEEP}  3
+  Wait Until Page Contains Element    //input[@class="app-select"]
+
+Edit App
+  Click Element    //input[@class="app-select"]
+  Wait Until Page Contains Element    xpath=(//span)[11]
+  Click Element    xpath=(//span)[11]
+  Sleep    ${SLEEP}  3
+  Wait Until Page Contains Element    //input[@id="app_acct_name"]
+  Input Text    //input[@id="app_acct_name"]    Oglethorpe
+  Sleep    ${SLEEP}
+  Wait Until Page Contains Element    //input[@id="app_city"]
+  Input Text    //input[@id="app_city"]    miadd
+  Sleep    ${SLEEP}  3
+  Wait Until Page Contains Element    //input[@id="app_update"]
+  Click Element    //input[@id="app_update"]
+  Sleep    ${SLEEP}  3
+
+Export app instance
+  Click Element    //input[@class="app-select"]
+  Sleep    ${SLEEP}  3
+  Wait Until Page Contains Element    xpath=(//span)[12]
+  Click Element    xpath=(//span)[12]
+  Sleep    ${SLEEP}  3
+  Page should have    .csv file downloaded
+
+Sorting columns button
+  Click Element    //input[@class="app-select"]
+  Sleep    ${SLEEP}  3
+  Wait Until Page Contains Element    xpath=(//span)[13]
+  Click Element    xpath=(//span)[13]
+  Sleep    ${SLEEP}  3
+  Wait Until Page Contains Element    xpath=(//span)[29]
+  Click Element    xpath=(//span)[29]
+  Sleep    ${SLEEP}  3
+  Page should have   dataTables_scrollHead
+
+Search by app column search Button
+  Click Link    //a[@id="appsColumnSearch"]
+  Sleep    ${SLEEP}   3
+  Page should have    coloumns-search-bar
+  Input Text    xpath=(//input[@class="tfoot-input"])[9]    kipu-11367
+  Sleep    ${SLEEP}   3
+  Page Should Contain Link    kipu-11367    Search Name=0    loglevel=INFO
