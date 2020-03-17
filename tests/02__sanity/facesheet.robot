@@ -16,7 +16,7 @@ Documentation   /features/patient_chart/facesheet_spec.rb
 ...             # facesheet should also includes space for to write notes, create urgent issues and edit the client’s demographic information.
 ...             # while viewing the facesheet, a case file should be able to be generated.
 ...
-Default Tag     sanity    sa005    points-4    addmore
+Default     sanity    sa005    points-4    addmore
 Resource        ../../suite.robot
 Suite Setup     Travel "slow" to "tester" patients "information" page in "My Locations"
 Suite Teardown  Return to mainpage
